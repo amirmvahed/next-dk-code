@@ -7,16 +7,3 @@ export default function Home() {
   </>
 }
 
-// 'use client'
-//
-// import { useRouter } from 'next/navigation'
-//
-// export default function Home() {
-//   const router = useRouter()
-//   return <>
-//     <h1>Welcome home!</h1>
-//     <button type="button" onClick={() => router.push('/users')}>
-//       Users
-//     </button>
-//   </>
-// }
