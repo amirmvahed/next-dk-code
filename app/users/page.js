@@ -1,9 +1,9 @@
 import Link from 'next/link'
-import {getUser} from "@/requests/getUsers";
+import {getUsers} from "@/requests/getUsers";
 
 
 export default async function Users() {
-    const users = await getUser()
+    const users = await getUsers()
 
     return (
         <ul>
