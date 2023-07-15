@@ -28,7 +28,7 @@ export default async function UserTodos({params}) {
 
 
 async function Todos({promise}) {
-    // Wait for the albums promise to resolve
+    // Wait for the todos promise to resolve
     const todos = await promise
 
     return (
