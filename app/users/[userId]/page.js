@@ -1,11 +1,11 @@
-import {getUserPosts} from "@/requests/getUserPosts";
 import {getUser} from "@/requests/getUser";
+import {getUserAlbums} from "@/requests/getUserAlbums";
 
 export default async function UserDetail({params}) {
     const userRes = getUser(params['userId']) // it takes 5 sec.
-    const userPostsRes = getUserPosts(params['userId']) // it takes 3 sec.
+    const userAlbumsRes = getUserAlbums(params['userId']) // it takes 3 sec.
 
-    const [userData, postsData] = await Promise.all([userRes, userPostsRes]) // it takes 5 sec (instead of 8 sec)
+    const [userData, albumsData] = await Promise.all([userRes, userAlbumsRes]) // it takes 5 sec (instead of 8 sec)
 
     const [user] = userData
 
@@ -19,12 +19,11 @@ export default async function UserDetail({params}) {
         </div>
         <hr/>
         <div>
-            <h2>User posts: </h2>
-            {postsData.map(post => {
+            <h2>User albums: </h2>
+            {albumsData.map(album => {
                 return (
                     <div>
-                        <h3>{post.title}</h3>
-                        <p>{post.body}</p>
+                        <h3>{album.title}</h3>
                     </div>
                 )
             })}
