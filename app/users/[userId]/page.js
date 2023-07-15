@@ -7,7 +7,7 @@ export default async function UserDetail({params}) {
 
     const [userData, postsData] = await Promise.all([userRes, userPostsRes]) // it takes 5 sec (instead of 8 sec)
 
-    const user = userData[0]
+    const [user] = userData
 
 
     return <>
