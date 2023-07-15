@@ -1,5 +1,6 @@
 import {getUser} from "@/requests/getUser";
 import {getUserAlbums} from "@/requests/getUserAlbums";
+import {getUsers} from "@/requests/getUsers";
 
 export default async function UserDetail({params}) {
     const userRes = getUser(params['userId']) // it takes 5 sec.
@@ -29,4 +30,13 @@ export default async function UserDetail({params}) {
             })}
         </div>
     </>
+}
+
+// Return a list of `params` to populate the [userId] dynamic segment
+export async function generateStaticParams() {
+    const users = await getUsers()
+
+    return users.map((user) => ({
+        userId: String(user.id)
+    }))
 }
