@@ -2,6 +2,14 @@ import {getUser} from "@/requests/getUser";
 import {getUserAlbums} from "@/requests/getUserAlbums";
 import {getUsers} from "@/requests/getUsers";
 
+export async function generateMetadata({ params }) {
+    const userData = await getUser(params['userId']) //deduped!
+    const user = userData.pop()
+    return {
+        title: user.name,
+    }
+}
+
 export default async function UserDetail({params}) {
     const userRes = getUser(params['userId']) // it takes 5 sec.
     const userAlbumsRes = getUserAlbums(params['userId']) // it takes 3 sec.
